@@ -14,6 +14,12 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
 	<link href="starter-template.css" rel="stylesheet">
+	<style>
+	.thumbnail {
+		width: 220px;
+		height: 315px;
+	}
+	</style>
   </head>
 
   <body>
@@ -30,9 +36,9 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#movie">Movie</a></li>
-					<li><a href="#random">Random</a></li>
+					<li class="active"><a href="#">Movie</a></li>
+					<li><a href="#movie">추천영화</a></li>
+					<li><a href="#"></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -41,13 +47,52 @@
 			</div><!--/.nav-collapse -->
 	  	</div>
 	</nav>
-
 	<div class="container">
 		<div class="starter-template">
 			<h1>영화를 추천해드립니다.</h1>
 			<p class="lead">테스트 중입니다.</p>
 	  	</div>
+	  	<div class="row">
+	  		<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+	  			<a data-toggle="modal" href="#modal-1" class="thumbnail">
+	  				<img src="img/movie_image.jpg" alt="">
+	  			</a>
+	  		</div>
+	  		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+	  			<a data-toggle="modal" href="#modal-1" class="thumbnail">
+	  				<img src="http://imgmovie.naver.com/mdi/mit110/0667/66727_P17_141743.jpg" alt="">
+	  			</a>
+	  		</div>
+	  		<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+	  			<a data-toggle="modal" href="#modal-1" class="thumbnail">
+	  				<img src="http://imgmovie.naver.com/mdi/mit110/0667/66727_P17_141743.jpg" alt="">
+	  			</a>
+	  		</div>
+	  		<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+	  			<a data-toggle="modal" href="#modal-1" class="thumbnail">
+	  				<img src="http://imgmovie.naver.com/mdi/mit110/0667/66727_P17_141743.jpg" alt="">
+	  			</a>
+	  		</div>
+	  	</div>
 	</div><!-- /.container -->
+	<!--Modal -->
+	<div class="container">
+		<div class="modal fade" id="modal-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Modal title</h4>
+					</div>
+					<div class="modal-body">
+	        					<p>One fine body</p>
+	      				</div>
+	      				<div class="modal-footer">
+	        					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Bootstrap core JavaScript
 	================================================== -->
