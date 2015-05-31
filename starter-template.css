@@ -1,9 +1,5 @@
 body {
-  padding-top: 50px;
-}
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
+    padding: 60px 15px;
 }
 .content{
     padding: 10px;
@@ -11,7 +7,10 @@ body {
 .footer{
     padding: 10px;
 }
-.thumbnail {
-		width: 220px;
-		height: 315px;
+
+.item {
+    width: 295px;
+    height: 443px;
+    float: left;
+    margin: 10px;
 }
