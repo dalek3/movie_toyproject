@@ -6,7 +6,7 @@ var mysql = require('mysql');
 //데이터베이스와 연결합니다.
 var client = mysql.createConnection({
     user: 'root',
-    password: 'pkpk001',
+    password: '1q2w3e',
     database: 'Company' //연결할 데이터베이스
 });
 
