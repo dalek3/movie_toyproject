@@ -1,61 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta charset="UTF-8">
+    <title>login</title>
 
-	<title>login</title>
-
-	<!-- Bootstrap core CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<!-- Custom styles for this template -->
-	<link href="starter-template.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
 </head>
-<body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-				</button>
-				<a class="navbar-brand" href="#">Movie Search</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="index.html">Movie</a></li>
-					<li><a href="recommend.html">추천영화</a></li>
-					<li><a href="#"></a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-					<li class="active"><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-				</ul>
-			</div><!--/.nav-collapse -->
-	  	</div>
-	</nav>
-	<div class="container">
-	<h2>Login</h2>
-	<form action="/" method="post" class="form-horizontal">
-		<div class="form-group">
-			<div class="col-xs-offset-1 col-xs-9 clearfix col-sm-offset-3 col-sm-6 ">
-			    	<input type="email" class="form-control" id="inputEmail" placeholder="Email">
-			    	<input type="password" class="form-control" id="inputPassword" placeholder="Password">
-				<div class="checkbox">
-					<label>
-						<input type="checkbox"> Remember me
-					</label>
-				</div>
-				<div class="submit">
-					<button type="submit" class="btn btn-primary">Sign in</button>
-				</div>
-			</div>
-		</div>
-	</form>
-	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+<body>
+    <div class="container">
+        <form action="/" method="post" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-xs-offset-1 col-xs-9 clearfix col-sm-offset-3 col-sm-6 ">
+                    <div class="header">
+                        <h2>Login</h2>
+                    </div>
+
+                    <div class='content'>
+                        <label>E-mail</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" />
+                        <label>Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" />
+                    </div>
+
+                    <div class="footer">
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
 </body>
+
 </html>

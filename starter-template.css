@@ -1,7 +1,17 @@
-﻿body {
+body {
   padding-top: 50px;
 }
 .starter-template {
   padding: 40px 15px;
   text-align: center;
+}
+.content{
+    padding: 10px;
+}
+.footer{
+    padding: 10px;
+}
+.thumbnail {
+		width: 220px;
+		height: 315px;
 }
