@@ -5,13 +5,41 @@
     <meta charset="UTF-8">
     <title>login</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="/starter-template.css" rel="stylesheet">
+    <link href="starter-template.css" rel="stylesheet">
 </head>
 
+
 <body>
+       <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="#">Movie Search</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Movie</a>
+                    </li>
+                    <li><a href="../recommend.html">추천영화</a>
+                    </li>
+                    <li>
+                        <a href="#"></a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="../register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                    </li>
+                    <li><a href="../login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
     <div class="container">
         <form action="/" method="post" class="form-horizontal">
             <div class="form-group">
@@ -34,7 +62,7 @@
             </div>
         </form>
     </div>
-    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 
