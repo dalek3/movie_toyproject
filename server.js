@@ -27,54 +27,6 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/register', routes.register);
 app.get('/login', routes.login);
-/*
-
-app.get('/login', function (request, response) {
-    var output = '';
-       <form action="/" method="post" class="form-horizontal">
-           <div class="form-group">
-                   <div class="header">
-                       <h2>Login</h2>
-                   </div>
-                   <div class="content">
-                       <label>E-mail</label>
-                       <input type="email" class="form-control" id="useremail" placeholder="Email" />
-                      <label>Password</label>
-                       <input type="password" class="form-control" id="password" placeholder="Password" />
-                       <input type="checkbox" id="remember-me" value="1" />
-                       <label class="string optional" for="user_remember_me">기억하기</label>
-                   </div>
-                   <div class="footer">
-                       <button type="submit" class="btn btn-primary">Login</button>
-                   </div>
-           </div>
-       </form>
-    response.send(output);
-});
-
-app.get('/mv', function (request, response) {
-    var output = '';
-    output += '   <form action="/" method="post" class="form-horizontal">'
-    output += '       <div class="form-group">'
-    output += '               <div class="header">'
-    output += '                   <h2>Login</h2>'
-    output += '               </div>'
-    output += '               <div class="content">'
-    output += '                   <label>E-mail</label>'
-    output += '                   <input type="email" class="form-control" id="useremail" placeholder="Email" />'
-    output += '                   <label>Password</label>'
-    output += '                   <input type="password" class="form-control" id="password" placeholder="Password" />'
-    output += '                   <input type="checkbox" id="remember-me" value="1" />'
-    output += '                   <label class="string optional" for="user_remember_me">기억하기</label>'
-    output += '               </div>'
-    output += '               <div class="footer">'
-    output += '                   <button type="submit" class="btn btn-primary">Login</button>'
-    output += '               </div>'
-    output += '       </div>'
-    output += '   </form>'
-    response.send(output);
-});
-*/
 
 //웹서버를 실행합니다.
 var server = http.createServer(app);
