@@ -9,3 +9,7 @@ exports.register = function(req, res){
 exports.login = function(req, res){
 	res.render('login');
 }
+
+exports.recommend = function(req, res){
+	res.render('recommend');
+}

@@ -25,8 +25,10 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
+app.get('/recommend', routes.recommend);
 app.get('/register', routes.register);
 app.get('/login', routes.login);
+
 
 //웹서버를 실행합니다.
 var server = http.createServer(app);
