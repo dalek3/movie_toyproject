@@ -13,3 +13,7 @@ exports.login = function(req, res){
 exports.recommend = function(req, res){
 	res.render('recommend');
 }
+
+exports.mv = function(req, res){
+	res.render('mv');
+}

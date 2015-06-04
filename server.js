@@ -28,6 +28,7 @@ app.get('/', routes.index);
 app.get('/recommend', routes.recommend);
 app.get('/register', routes.register);
 app.get('/login', routes.login);
+app.get('/mv', routes.mv);
 
 
 //웹서버를 실행합니다.
