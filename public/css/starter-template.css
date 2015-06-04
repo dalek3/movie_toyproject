@@ -1,0 +1,28 @@
+body {
+    padding: 60px 15px;
+}
+.form-group{
+    padding: 30px;
+}
+.content{
+    padding: 10px;
+}
+.footer{
+    padding: 10px;
+}
+
+.grid-item {
+    width: 295px;
+    height: 443px;
+    float: left;
+    margin: 10px;
+}
+
+.login-form{
+    padding: 15px 15px 0 14px
+}
+#remember-me {
+    float: left;
+    margin-right: 10px
+}
+
