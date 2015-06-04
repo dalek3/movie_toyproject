@@ -1,0 +1,13 @@
+form.form-horizontal(action='/register', method='post')
+    .form-group
+        .header
+          h2 Sign Up            
+        .content
+          label(for='email') E-mail                 
+          input#useremail.form-control(type='email', placeholder='Email', required='')                 
+          label Password                
+          input#password.form-control(type='password', placeholder='Password')                  
+          label Password Check                
+          input#password2.form-control(type='password', placeholder='Password Check')             
+        .footer
+          button.btn.btn-primary(type='submit') Sign Up

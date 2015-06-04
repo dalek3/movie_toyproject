@@ -1,7 +1,6 @@
 //모듈을 추출합니다.
 var express = require('express'),
     routes = require('./routes'),
-    user = require('./routes/user'),
     http = require('http'),
     path = require('path');
 
@@ -26,8 +25,10 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/recommend', routes.recommend);
-app.get('/register', routes.register);
-app.get('/login', routes.login);
+app.get('/register', routes.registerForm);
+app.get('/login', routes.loginForm);
+app.post('/register', routes.register);
+app.post('/login', routes.login);
 app.get('/mv', routes.mv);
 
 
