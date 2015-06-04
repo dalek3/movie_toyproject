@@ -8,7 +8,7 @@ app.use(express.static('public'));
 app.use(express.bodyParser());
 app.use(app.router);
 
-app.get('/register.html', function (request, response) {
+app.get('/register', function (request, response) {
     var output = '';
     output += '<form action="/" class="form-horizontal" method="post">'
     output += '<div class="form-group">'
@@ -32,7 +32,7 @@ app.get('/register.html', function (request, response) {
     response.send(output);
 });
 
-app.get('/login.html', function (request, response) {
+app.get('/login', function (request, response) {
     var output = '';
     output += '   <form action="/" method="post" class="form-horizontal">'
     output += '       <div class="form-group">'
