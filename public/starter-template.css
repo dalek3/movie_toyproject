@@ -28,7 +28,3 @@ body {
 .string {
     color: #333
 }
-
-#sign-up .modal-body{
-    min-height: 500px;
-}
