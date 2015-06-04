@@ -10,7 +10,7 @@ app.use(app.router);
 
 app.get('/register.html', function (request, response) {
     var output = '';
-    output += '<form action="/" class="form-horizontal" method="post">'0
+    output += '<form action="/" class="form-horizontal" method="post">'
     output += '<div class="form-group">'
     output += '<div class="header">'
     output += '<h2>Sign Up</h2>'
