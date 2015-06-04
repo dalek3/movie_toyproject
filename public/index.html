@@ -13,7 +13,7 @@
 
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
+        <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
@@ -32,7 +32,7 @@
                         <a href="../recommend.html">추천영화</a>
                     </li>
                 </ul>
-                <div class="col-sm-4 col-md-6 collapse navbar-collapse navbar-ex1-collapse">
+                <div class="col-sm-4 col-md-5 collapse navbar-collapse navbar-ex1-collapse">
                     <form class="navbar-form" role="search" method="get" id="search-form" name="search-form">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search" id="query" name="query" value="">
@@ -45,18 +45,39 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="../register.html">
+                        <a href="../register.html" data-toggle="modal" data-target="#sign-up">
+
                             <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+
                     </li>
                     <li>
-                        <a href="../login.html">
+                        <a href="../login.html" data-toggle="modal" data-target="#login">
                             <span class="glyphicon glyphicon-log-in"></span> Login</a>
                     </li>
                 </ul>
             </div>
-            <!--/.nav-collapse -->
         </div>
     </nav>
+    <!-- Modal -->
+    <div id="sign-up" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>One fine body…</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="login" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>One fine body…</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="container">
         <div class="item"><img src="http://movie.phinf.naver.net/20141107_225/1415343619212Ydvvz_JPEG/movie_image.jpg?type=m665_443_2" alt="" data-toggle="modal" data-target=#myModal>
