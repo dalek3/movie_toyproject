@@ -30,7 +30,7 @@ app.get('/login', routes.loginForm);
 app.post('/register', routes.register);
 app.post('/login', routes.login);
 app.get('/mv', routes.mv);
-app.get('/movie.json', routes.load);
+app.get('/movie', routes.load);
 
 
 //웹서버를 실행합니다.

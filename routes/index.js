@@ -41,10 +41,10 @@ exports.mv = function(req, res){
 	res.render('mv');
 }
 
-//DB 조회 -json으로 변환
+//DB 조회 -json으로 변환 10개씩
 exports.load = function(req, res) {
-    connection.query('SELECT * FROM movie', function(err, rows) {
-        res.json(rows);
+    connection.query('SELECT * FROM movie LIMIT 0,10', function(err, rows) {
+        res.send(rows);
     });
 };
                          
