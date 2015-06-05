@@ -1,3 +1,11 @@
-h3 회원가입 완료
-div
-    ul 이메일 ' #{useremail}
+extends layout
+
+block content
+  h3 회원가입완료
+  p 가입한 회원 정보는 아래와 같습니다.
+  p Welcome to #{title}
+  div
+    ul
+      li 이메일 : #{useremail}
+      li 패스워드 : #{password}
+      

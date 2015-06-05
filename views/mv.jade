@@ -1,13 +1,16 @@
-form.form-horizontal(action='/', method='post')
-    .form-group
-        .header
-          h2 Login
-        .content
-          label E-mail                   
-          input#useremail.form-control(type='email', placeholder='Email')
-          label Password    
-          input#password.form-control(type='password', placeholder='Password') 
-          input#remember-me(type='checkbox', value='1')          
-          label.string.optional(for='user_remember_me') 기억하기         
-        .footer
-          button.btn.btn-primary(type='submit') Login
+extends layout
+
+block content
+    form.form-horizontal(action='/', method='post')
+        .form-group
+            .header
+              h2 Login
+            .content
+              label E-mail                   
+              input#useremail.form-control(type='email', placeholder='Email')
+              label Password    
+              input#password.form-control(type='password', placeholder='Password') 
+              input#remember-me(type='checkbox', value='1')          
+              label.string.optional(for='user_remember_me') 기억하기         
+            .footer
+              button.btn.btn-primary(type='submit') Login
