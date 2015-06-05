@@ -1,3 +1,13 @@
+//모듈을 추출합니다.
+var mysql = require('mysql');
+
+//데이터베이스와 연결합니다.
+var connection = mysql.createConnection({
+    user: 'root',
+    password: '1q2w3e',
+    database: 'movie' //연결할 데이터베이스
+});
+
 exports.index = function(req, res){
   res.render('index');
 };
@@ -30,3 +40,11 @@ exports.recommend = function(req, res){
 exports.mv = function(req, res){
 	res.render('mv');
 }
+
+//DB 조회 -json으로 변환
+exports.load = function(req, res) {
+    connection.query('SELECT * FROM movie', function(err, rows) {
+        res.json(rows);
+    });
+};
+                         

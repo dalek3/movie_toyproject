@@ -7,7 +7,7 @@ var express = require('express'),
 //웹 서버를 생성합니다.
 var app = express();
 
-app.configure(function(){
+app.configure(function () {
   app.set('port', process.env.PORT || 52273);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -30,6 +30,7 @@ app.get('/login', routes.loginForm);
 app.post('/register', routes.register);
 app.post('/login', routes.login);
 app.get('/mv', routes.mv);
+app.get('/movie.json', routes.load);
 
 
 //웹서버를 실행합니다.
