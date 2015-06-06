@@ -29,9 +29,9 @@ app.get('/', routes.index);
 app.get('/recommend', routes.recommend);
 app.get('/register', routes.registerForm);
 app.get('/login', routes.loginForm);
-app.post('/register', routes.register);
-app.post('/user/', routes.login);
-app.get('/user/', routes.loginOk);
+app.post('/user', routes.register);
+app.post('/user', routes.login);
+app.get('/user', routes.loginOk);
 app.get('/mv', routes.mv);
 app.get('/movie', routes.load);
 
