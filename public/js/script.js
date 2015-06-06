@@ -7,7 +7,8 @@ $(function () {
             var html = '';
             $.each(data, function (index, item) {
                 html += '<div class="grid-item">';
-                html += '<img src="' + item.imgpath + '" data-toggle="modal" data-target=#myModal>';
+                html += '<a href="mv", data-toggle="modal", data-target="#myModal">';
+                html += '<img src="' + item.imgpath + '">';
                 //$('img').attr('src',item.imgpath).appendTo('.grid-item');
                 html += '</div>';
             });

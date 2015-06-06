@@ -4,11 +4,8 @@ body {
 .form-group{
     padding: 30px;
 }
-.content{
-    padding: 10px;
-}
 .footer{
-    padding: 10px;
+    padding: 60px;
 }
 
 .grid-item {
@@ -18,9 +15,6 @@ body {
     margin: 30px;
 }
 
-.login-form{
-    padding: 15px 15px 0 14px
-}
 #remember-me {
     float: left;
     margin-right: 10px

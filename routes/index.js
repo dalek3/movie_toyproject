@@ -43,7 +43,7 @@ exports.register = function(req, res){
                      }
                      console.log("가입되었습니다. 환영합니다");
                      //index를 다시 띄움
-                     res.redirect('/user');
+                     res.redirect('/');
                     });
               }
                else{
