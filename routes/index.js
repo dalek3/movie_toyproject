@@ -43,7 +43,7 @@ exports.mv = function(req, res){
 
 //DB 조회 -json으로 변환 10개씩
 exports.load = function(req, res) {
-    connection.query('SELECT * FROM movie', function(err, rows) {
+    connection.query('SELECT * FROM movie LIMIT 0,10', function(err, rows) {
         res.send(rows);
     });
 };
