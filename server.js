@@ -30,7 +30,8 @@ app.get('/recommend', routes.recommend);
 app.get('/register', routes.registerForm);
 app.get('/login', routes.loginForm);
 app.post('/register', routes.register);
-app.post('/login', routes.login);
+app.post('/user/', routes.login);
+app.get('/user/', routes.loginOk);
 app.get('/mv', routes.mv);
 app.get('/movie', routes.load);
 

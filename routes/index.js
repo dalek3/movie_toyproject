@@ -43,7 +43,7 @@ exports.register = function(req, res){
                      }
                      console.log("가입되었습니다. 환영합니다");
                      //index를 다시 띄움
-                     res.redirect('/');
+                     res.redirect('/login');
                     });
               }
                else{
@@ -66,7 +66,7 @@ exports.login = function(req, res){
                 //exports.index다시 실행될때 변수로 넣기 위해 선언
                 req.session.useremail = req.body.useremail;
                 //index를 다시 띄움
-                res.redirect('/');
+                res.redirect('/user/');
             }
             else {
                 console.log("비밀번호를 다르게 입력하였습니다.");
@@ -76,6 +76,9 @@ exports.login = function(req, res){
             console.log("가입되어 있지 않습니다.");
         }
     });
+}
+exports.loginOk = function(req, res){
+	res.render('login');
 }
 
 exports.recommend = function(req, res){
