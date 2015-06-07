@@ -2,20 +2,9 @@ $(function () {
 	var $container = $('.grid');
 	function selectData() {
 		// Ajax를 수행합니다.
-		$.getJSON('/movie.json', function (data) {
-			var html = '';
-			$.each(data, function (index, item) {
-				html += '<div class="grid-item">';
-				html += '<a href="movie/'+item.name+'" data-toggle="modal" data-target="#myModal">';
-				html += '<img src="' + item.imgpath + '">';
-				//$('img').attr('src',item.imgpath).appendTo('.grid-item');
-				html += '</div>';
-			});
-			$container.html(html);
 			$('.grid-item').imagesLoaded(function () {
 				$container.isotope({ 
 				});
-			});
 			$container.infinitescroll({
 					navSelector: '#page-nav', // selector for the paged navigation 
 					nextSelector: '#page-nav a', // selector for the NEXT link (to page 2)

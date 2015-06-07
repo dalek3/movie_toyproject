@@ -9,10 +9,17 @@ var connection = mysql.createConnection({
 	database: 'movie' //연결할 데이터베이스
 });
 
+//DB 조회 -json으로 변환 10개씩
+var start = 0;
+var offset =10;//item per page
+var page = 1;
 exports.index = function(req, res){
-	res.render('index');
+	start = (page-1) * offset;
+		connection.query('SELECT name, imgpath FROM movie LIMIT ?, ?', [start, offset] , function(err, rows) {
+			console.log("rows : " + JSON.stringify(rows));
+			res.render('index',{row: rows});
+		});
 };
-
 exports.registerForm = function(req, res){
 	res.render('register-form');
 };
@@ -85,19 +92,12 @@ exports.recommend = function(req, res){
 	res.render('recommend');
 }
 
-exports.select = function(req, res){
-	connection.query('SELECT  *  FROM movie WHERE name=?', [req.params.name], function(err, modal) {
-		res.send(modal);
+exports.movie = function(req, res){
+	connection.query('SELECT  *  FROM movie WHERE name=?', [req.params.name], function(err, row) {
+		console.log(row);
+		console.log(req.params.name);
+		res.render('movie', {row: row[0]});
 	});
 }
-//DB 조회 -json으로 변환 10개씩
-var start = 0;
-var offset =10;//item per page
-var page = 1;
-exports.load = function(req, res) {
-	start = (page-1) * offset;
-	connection.query('SELECT name, imgpath FROM movie LIMIT ?, ?', [start, offset] , function(err, rows) {
-		res.send(rows);
-	});
-};
+
 												 

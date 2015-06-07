@@ -32,9 +32,7 @@ app.get('/login', routes.loginForm);
 //app.post('/user', routes.register);
 app.post('/user', routes.login);
 app.get('/user', routes.loginOk);
-//app.get('/movie/:name', routes.movie);
-app.get('/movie/:name', routes.select);
-app.get('/movie.json', routes.load);
+app.get('/movie/:name', routes.movie);
 
 
 //웹서버를 실행합니다.
