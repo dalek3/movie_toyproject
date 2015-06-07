@@ -1,67 +1,54 @@
 extends layout
 
 block content
-    nav.navbar.navbar-inverse.navbar-fixed-top
-      .navbar-inner
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href='#') Movie Search
-        #navbar.collapse.navbar-collapse
-          ul.nav.navbar-nav
-            li
-              a(href='/') Movie
-            li.active
-              a(href='recommend') 추천영화
-          form#search-form.col-md-2.navbar-form.collapse.navbar-collapse.navbar-ex1-collapse(role='search', method='get', name='search-form')
-            .input-group
-              input#query.form-control(type='text', placeholder='Search', name='query', value='')
-              .input-group-btn
-                button.btn.btn-success(type='submit')
-                  span.glyphicon.glyphicon-search
-          ul.nav.navbar-nav.navbar-right
-            li
-              a(href='register', data-toggle='modal', data-target='#sign-up')
-                span.glyphicon.glyphicon-user
-                |  Sign Up
-            li
-              a(href='login', data-toggle='modal', data-target='#login')
-                span.glyphicon.glyphicon-log-in
-                |  Login
-    // Modal
-    #sign-up.modal.fade
-      .modal-dialog
-        .modal-content
-          .modal-body
-            p One fine body&mldr;
-    // Modal
-    #login.modal.fade
-      .modal-dialog
-        .modal-content
-          .modal-body
-            p One fine body&mldr;
-    // Modal
-    #myModal.modal.fade
-      .modal-dialog
-        .modal-content
-          .modal-body
-            p One fine body&mldr;
-    .grid
-      .grid-item
-        a(href='mv', data-toggle='modal', data-target='#myModal')
-          img(src='http://movie.phinf.naver.net/20141107_225/1415343619212Ydvvz_JPEG/movie_image.jpg?type=m665_443_2', alt='')
-      .grid-item
-        img(src='http://movie.phinf.naver.net/20140619_249/1403139049829XxliQ_JPEG/movie_image.jpg?type=m665_443_2', alt='')
-      .grid-item
-        img(src='http://movie.phinf.naver.net/20141107_225/1415343619212Ydvvz_JPEG/movie_image.jpg?type=m665_443_2', alt='')
-      .grid-item
-        img(src='http://movie.phinf.naver.net/20140619_249/1403139049829XxliQ_JPEG/movie_image.jpg?type=m665_443_2', alt='')
-      .grid-item
-        img(src='http://movie.phinf.naver.net/20141107_225/1415343619212Ydvvz_JPEG/movie_image.jpg?type=m665_443_2', alt='')
-      .grid-item
-        img(src='http://movie.phinf.naver.net/20140619_249/1403139049829XxliQ_JPEG/movie_image.jpg?type=m665_443_2', alt='')
-    nav#page-nav
-      a(href='2.html')
+	nav.navbar.navbar-inverse.navbar-fixed-top
+		.navbar-inner
+			.navbar-header
+				button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href='#') Movie Search
+			#navbar.collapse.navbar-collapse
+				ul.nav.navbar-nav
+					li
+						a(href='/') Movie
+					li.active
+						a(href='recommend') 추천영화
+				form#search-form.col-md-2.navbar-form.collapse.navbar-collapse.navbar-ex1-collapse(role='search', method='get', name='search-form')
+					.input-group
+						input#query.form-control(type='text', placeholder='Search', name='query', value='')
+						.input-group-btn
+							button.btn.btn-success(type='submit')
+								span.glyphicon.glyphicon-search
+				ul.nav.navbar-nav.navbar-right
+					li
+						a(href='register', data-toggle='modal', data-target='#sign-up')
+							span.glyphicon.glyphicon-user
+							|  Sign Up
+					li
+						a(href='login', data-toggle='modal', data-target='#login')
+							span.glyphicon.glyphicon-log-in
+							|  Login
+	// Modal
+	#sign-up.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-body
+					p One fine body&mldr;
+	// Modal
+	#login.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-body
+					p One fine body&mldr;
+	// Modal
+	#myModal.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-body
+					p One fine body&mldr;
+	.grid
+	nav#page-nav
+		a(href='2.html')

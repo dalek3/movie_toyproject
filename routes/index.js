@@ -57,24 +57,24 @@ exports.register = function(req, res){
 
 exports.login = function(req, res){
 	connection.query('SELECT * FROM movieinfo WHERE useremail = ?', [req.body.useremail], function (err, results, fields) {
-			//console.log(req);
-			if (results[0] != undefined) {
-					console.log(results[0].password);
-					console.log(req.body.password);
-					if (results[0].password == req.body.password) {
-							console.log("로그인 가능합니다.");
-							//exports.index다시 실행될때 변수로 넣기 위해 선언
-							req.session.useremail = req.body.useremail;
-							//index를 다시 띄움
-							res.redirect('/user');
-					}
-					else {
-							console.log("비밀번호를 다르게 입력하였습니다.");
-					}
-			}
-			else {
-					console.log("가입되어 있지 않습니다.");
-			}
+		//console.log(req);
+		if (results[0] != undefined) {
+				console.log(results[0].password);
+				console.log(req.body.password);
+				if (results[0].password == req.body.password) {
+						console.log("로그인 가능합니다.");
+						//exports.index다시 실행될때 변수로 넣기 위해 선언
+						req.session.useremail = req.body.useremail;
+						//index를 다시 띄움
+						res.redirect('/user');
+				}
+				else {
+						console.log("비밀번호를 다르게 입력하였습니다.");
+				}
+		}
+		else {
+				console.log("가입되어 있지 않습니다.");
+		}
 	});
 }
 exports.loginOk = function(req, res){
@@ -85,14 +85,19 @@ exports.recommend = function(req, res){
 	res.render('recommend');
 }
 
-exports.mv = function(req, res){
-	res.render('mv');
+exports.select = function(req, res){
+	connection.query('SELECT  *  FROM movie WHERE name=?', [req.params.name], function(err, modal) {
+		res.send(modal);
+	});
 }
-
 //DB 조회 -json으로 변환 10개씩
+var start = 0;
+var offset =10;//item per page
+var page = 1;
 exports.load = function(req, res) {
-	connection.query('SELECT * FROM movie LIMIT 0,10', function(err, rows) {
-			res.send(rows);
+	start = (page-1) * offset;
+	connection.query('SELECT name, imgpath FROM movie LIMIT ?, ?', [start, offset] , function(err, rows) {
+		res.send(rows);
 	});
 };
 												 

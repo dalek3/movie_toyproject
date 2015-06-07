@@ -1,14 +1,14 @@
 body
-    div.modal-header
-        h4.modal-title Sign Up
-    div.modal-body
-        form.form-horizontal(action='/register', method='post')
-            .form-group
-                  label(for='email') E-mail                 
-                  input#useremail.form-control(name='useremail' type='email', placeholder='Email', required='')                 
-                  label Password                
-                  input#password.form-control(name='password' type='password', placeholder='Password')                  
-                  label Password Check                
-                  input#password2.form-control(name='password2' type='password', placeholder='Password Check')             
-                .footer
-                  button.btn.btn-primary(type='submit') Sign Up
+	div.modal-header
+			h4.modal-title Sign Up
+	div.modal-body
+		form.form-horizontal(action='/register', method='post')
+			.form-group
+					label(for='email') E-mail                 
+					input#useremail.form-control(name='useremail' type='email', placeholder='Email', required='')                 
+					label Password                
+					input#password.form-control(name='password' type='password', placeholder='Password')                  
+					label Password Check                
+					input#password2.form-control(name='password2' type='password', placeholder='Password Check')             
+					.footer
+					button.btn.btn-primary(type='submit') Sign Up

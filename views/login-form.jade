@@ -1,16 +1,16 @@
 body
-    div.modal-header
-        h4.modal-title Login
-    div.modal-body
-        form.form-horizontal(action='/user', method='post')
-            .form-group
-                  label E-mail                   
-                  input#email.form-control(name='useremail' type='email', placeholder='Email')
-                  label Password    
-                  input#password.form-control(name='password' type='password', placeholder='Password') 
-                  input#remember-me(type='checkbox', value='1')          
-                  label.string.optional(for='user_remember_me') 기억하기        
-                .footer
-                  button.btn.btn-primary(type='submit') Login
+	div.modal-header
+			h4.modal-title Login
+	div.modal-body
+		form.form-horizontal(action='/user', method='post')
+			.form-group
+					label E-mail                   
+					input#email.form-control(name='useremail' type='email', placeholder='Email')
+					label Password    
+					input#password.form-control(name='password' type='password', placeholder='Password') 
+					input#remember-me(type='checkbox', value='1')          
+					label.string.optional(for='user_remember_me') 기억하기        
+				.footer
+					button.btn.btn-primary(type='submit') Login
 
-    
+		
