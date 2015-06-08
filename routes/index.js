@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 
 //DB 조회 -json으로 변환 10개씩
 var start = 0;
-var offset =10;//item per page
+var offset =100;//item per page
 var page = 1;
 exports.index = function(req, res){
 	start = (page-1) * offset;
@@ -98,7 +98,7 @@ exports.recommend = function(req, res){
 }
 
 exports.movie = function(req, res){
-	connection.query('SELECT  *  FROM movie WHERE name=?', [req.params.name], function(err, row) {
+	connection.query('SELECT  *  FROM movie WHERE name= ?', [req.params.name], function(err, row) {
 		console.log(row);
 		console.log(req.params.name);
 		res.render('movie', {row: row[0]});
