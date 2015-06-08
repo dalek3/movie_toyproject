@@ -20,6 +20,7 @@ exports.index = function(req, res){
 			res.render('index',{row: rows});
 		});
 };
+
 exports.registerForm = function(req, res){
 	res.render('register-form');
 };
@@ -89,7 +90,11 @@ exports.loginOk = function(req, res){
 }
 
 exports.recommend = function(req, res){
-	res.render('recommend');
+	start = (page-1) * offset;
+		connection.query('SELECT name, imgpath FROM movie LIMIT ?, ?', [start, offset] , function(err, rows) {
+			console.log("rows : " + JSON.stringify(rows));
+			res.render('recommend',{row: rows});
+		});
 }
 
 exports.movie = function(req, res){

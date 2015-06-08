@@ -1,7 +1,6 @@
 $(function () {
 	var $container = $('.grid');
-	function selectData() {
-		// Ajax를 수행합니다.
+	// Ajax를 수행합니다.
 			$('.grid-item').imagesLoaded(function () {
 				$container.isotope({ 
 				});
@@ -20,7 +19,8 @@ $(function () {
 					$container.isotope('appended', $(newElements));
 				}
 			);
-		});
-	}
-	selectData();
+	});
+	$('#myModal').on('hidden.bs.modal',function(){
+		$(this).removeData('bs.modal')
+	});
 });
