@@ -1,26 +1,31 @@
 $(function () {
 	var $container = $('.grid');
-	// Ajax를 수행합니다.
-			$('.grid-item').imagesLoaded(function () {
-				$container.isotope({ 
-				});
-			$('#myModal').on('hidden.bs.modal',function(){
-				$(this).removeData('bs.modal')
+
+	$('.grid-item').imagesLoaded(function () {
+		$container.isotope({ });
+		/*$container.infinitescroll({
+			navSelector: 'a#next:last', // selector for the paged navigation 
+			nextSelector: 'a#next:last', // selector for the NEXT link (to page 2)
+			itemSelector: '.grid-item', // selector for all items you'll retrieve
+			dataType: 'json',
+			debug: true,
+			appendCallback	: false // USE FOR PREPENDING
+		},
+		function( response ) {
+			var jsonData = response.results;
+			var html = '';
+			$.each(jsonData, function (index, item) {
+				html += '<div class="grid-item">';
+				html += '<a class="thumbnail">'
+				html += '<img src="' + item.title + '">';
+				html += '</a>'
+				html += '</div>';
 			});
-			$container.infinitescroll({
-					navSelector: '#page-nav', // selector for the paged navigation 
-					nextSelector: '#page-nav a', // selector for the NEXT link (to page 2)
-					itemSelector: ".grid-item", // selector for all items you'll retrieve
-				   /*loading: {
-						finishedMsg: '로드할 페이지가 더 이상 없습니다.',
-						msgText: "<em>다음 페이지를 로딩합니다.</em>",
-						img: 'http://i.imgur.com/6RMhx.gif'
-					}*/
-				},
-				// trigger Masonry as a callback
-				function (newElements) {
-					$container.isotope('appended', $(newElements));
-				}
-			);
+			$container.append(html).isotope('appended', $('.grid-item'))
+			
+	      });*/
 	});
+	$('#myModal').on('hidden.bs.modal',function(){
+		$(this).removeData('bs.modal')
+	});	
 });

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+		//usernav.jade include
+		include usernav
+		// Modal
+		#AModal.modal.fade
+			.modal-dialog
+				.modal-content
+					.modal-body
+						p One fine body&mldr;
+		#BModal.modal.fade
+				.modal-dialog
+					.modal-content
+						.modal-body
+							p One fine body&mldr;
+		.header
+			h4.modal-title My Information
+		.body
+			ul.content
+				li
+					h4 My ID :#{username}
+				li
+					a(href='/#{username}/passwordchange' data-toggle='modal' data-target='#AModal') 비밀번호 변경
+				li
+					a(href='/#{username}/withdrawal' data-toggle='modal' data-target='#BModal') 탈퇴
+					hr
+				li
+					h4 My favoratie movie
+					hr
+				li
+					h4 My hate movie
+					hr

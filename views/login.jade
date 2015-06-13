@@ -1,34 +1,10 @@
 extends layout
 
 block content
-	nav.navbar.navbar-inverse.navbar-fixed-top
-		.navbar-inner
-			.navbar-header
-				button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
-					span.sr-only Toggle navigation
-					span.icon-bar
-					span.icon-bar
-					span.icon-bar
-				a.navbar-brand(href='#') Movie Search
-			#navbar.collapse.navbar-collapse
-				ul.nav.navbar-nav
-					li.active
-						a(href='/') Movie
-					li
-						a(href='recommend') 추천영화
-				form#search-form.col-md-2.navbar-form.collapse.navbar-collapse.navbar-ex1-collapse(role='search', method='get', name='search-form')
-					.input-group
-						input#query.form-control(type='text', placeholder='Search', name='query', value='')
-						.input-group-btn
-							button.btn.btn-success(type='submit')
-								span.glyphicon.glyphicon-search
-				ul.nav.navbar-nav.navbar-right
-					li
-						a(href='login', data-toggle='modal', data-target='#loginout')
-							span.glyphicon.glyphicon-log-in
-							|  logout
+	//usernav.jade include
+	include usernav
 	// Modal
-	#sign-up.modal.fade
+	#alpha.modal.fade
 		.modal-dialog
 			.modal-content
 				.modal-body
@@ -45,11 +21,5 @@ block content
 			.modal-content
 				.modal-body
 					p One fine body&mldr;
-	.grid
-	nav#page-nav
-		a(href='2.html')
-		
-			
-
-			
-		
+	//grid.jade include
+	include grid

@@ -15,7 +15,13 @@ app.configure(function () {
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
 	app.use(express.cookieParser());//추가
-	app.use(express.session({ secret: "keyboard cat" }));//추가
+	app.use(express.session({
+		key: 'sid', // 세션키
+		secret: 'secret', // 비밀키
+		cookie: {
+			maxAge: 1000 * 60 * 60 // 쿠키 유효기간 1시간
+		}
+	}));//추가
 	app.use(express.methodOverride());
 	app.use(app.router);
 	app.use(express.static(path.join(__dirname, 'public')));
@@ -26,13 +32,22 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/recommend', routes.recommend);
-app.get('/register', routes.registerForm);
-app.get('/login', routes.loginForm);
-//app.post('/user', routes.register);
-app.post('/user', routes.login);
-app.get('/user', routes.loginOk);
 app.get('/movie/:name', routes.movie);
+app.get('/:username/profile', routes.userinfoform);
+
+app.get('/register', routes.registerForm);
+app.post('/register', routes.register);
+app.get('/login', routes.loginForm);
+app.post('/:username', routes.login);
+app.get('/:username', routes.loginOk);
+
+app.get('/:username/passwordchange', routes.passwordchangeform);
+app.post('/:username/passwordchange', routes.passwordchange);
+app.get('/:username/withdrawal', routes.withdrawalform);
+app.post('/:username/withdrawal', routes.withdrawal);
+
+app.get('/logout', routes.logout);
+
 
 
 //웹서버를 실행합니다.
