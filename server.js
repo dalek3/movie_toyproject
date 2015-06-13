@@ -33,18 +33,18 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/movie/:name', routes.movie);
-app.get('/:username/profile', routes.userinfoform);
+app.get('/user/:username/profile', routes.userinfoform);
 
 app.get('/register', routes.registerForm);
 app.post('/register', routes.register);
 app.get('/login', routes.loginForm);
-app.post('/:username', routes.login);
-app.get('/:username', routes.loginOk);
+app.post('/user/:username', routes.login);
+app.get('/user/:username', routes.loginOk);
 
-app.get('/:username/passwordchange', routes.passwordchangeform);
-app.post('/:username/passwordchange', routes.passwordchange);
-app.get('/:username/withdrawal', routes.withdrawalform);
-app.post('/:username/withdrawal', routes.withdrawal);
+app.get('/user/:username/passwordchange', routes.passwordchangeform);
+app.post('/user/:username/passwordchange', routes.passwordchange);
+app.get('/user/:username/withdrawal', routes.withdrawalform);
+app.post('/user/:username/withdrawal', routes.withdrawal);
 
 app.get('/logout', routes.logout);
 

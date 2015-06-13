@@ -6,7 +6,6 @@ var connection = mysql.createConnection({
 	user: 'root',
 	password: '1q2w3e',
 	database: 'movie',
-	debug: true
 });
 
 //DB 조회 -json으로 변환 10개씩
@@ -36,10 +35,6 @@ exports.registerForm = function(req, res){
 	res.render('register-form');
 };
 
-exports.loginForm = function(req, res){
-	res.render('login-form');
-}
-
 exports.register = function(req, res){
 	 var info = {
 		username: req.body.username,
@@ -59,7 +54,7 @@ exports.register = function(req, res){
 					//exports.index다시 실행될때 변수로 넣기 위해 선언
 					req.session.username = info.username;
 					//index를 다시 띄움
-					res.redirect(req.session.username);
+					res.redirect('/user/'+req.session.username);
 				});
 			}
 			else{
@@ -71,6 +66,10 @@ exports.register = function(req, res){
 	});
 };
 
+exports.loginForm = function(req, res){
+	res.render('login-form');
+}
+
 exports.login = function(req, res){
 	connection.query('SELECT * FROM movieinfo WHERE username = ?', [req.body.username], function (err, results) {
 		if (results[0] !== undefined) {
@@ -79,7 +78,7 @@ exports.login = function(req, res){
 				//exports.index다시 실행될때 변수로 넣기 위해 선언
 				req.session.username = results[0].username;
 				//index를 다시 띄움
-				res.redirect(req.session.username);
+				res.redirect('/user/'+req.session.username);
 			}
 			else {
 					console.log("비밀번호를 다르게 입력하였습니다.");
@@ -113,6 +112,21 @@ exports.userinfoform = function (req, res) { //좋아요 영화 쿼리
 		     	//result2: hate
 		     });
 	});
+	/*    var favorlite;
+    var hatelist;
+	connection.query('SELECT * FROM favoritelist WHERE useremail = ?', [req.session.useremail], 
+		function (err, favorate) {
+	    connection.query('SELECT * FROM hatelist WHERE useremail = ?', [req.session.useremail],
+	    	function (err, hate) {
+		        console.log(favorate);
+		        console.log(hate);
+		        res.render('user-info-form', {
+		            useremail: req.session.useremail,
+		              result: favorate,
+		             result2: hate
+		    });
+		});
+	});*/
 };
 
 exports.passwordchangeform = function (req, res) {
@@ -124,11 +138,11 @@ exports.passwordchange = function (req, res) {
 	if (req.body.confirm === req.body.new) {
 		connection.query('UPDATE movieinfo SET password = ? WHERE username = ?', [req.body.new, data]);
 			console.log("비밀번호 변경 완료");
-			res.redirect('/'+data+'/profile'); 
+			res.redirect('/user/'+data+'/profile'); 
 	}
 	else {
 		console.log("변경 하고자 하는 비밀번호가 맞지 않습니다.");
-		res.redirect('/'+data+'/profile'); 
+		res.redirect('/user/'+data+'/profile'); 
 	}
 };
 
@@ -139,15 +153,12 @@ exports.withdrawalform = function (req, res) {
 exports.withdrawal = function (req, res) {
 	var data = req.session.username;
 	connection.query('DELETE from movieinfo WHERE username = ?', data,function (err){
-		console.log(data);
 		res.redirect('/'); 
 	});
 }
-// 안됨
 exports.logout = function(req, res){
 	console.log('로그아웃');
-	req.session.destroy(function(){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-    		res.redirect('/');                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-  	});  
+	req.session.destroy();
+    	res.redirect('/');                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 }
 											 
