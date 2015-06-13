@@ -15,11 +15,12 @@ block content
 						.modal-body
 							p One fine body&mldr;
 		.header
-			h4.modal-title My Information
+			h2.modal-title My Information
+			hr
 		.body
 			ul.content
 				li
-					h4 My ID :#{username}
+					h4 My ID : #{username}
 				li
 					a(href='/#{username}/passwordchange' data-toggle='modal' data-target='#AModal') 비밀번호 변경
 				li
