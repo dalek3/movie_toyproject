@@ -70,6 +70,7 @@ exports.loginForm = function(req, res){
 	res.render('login-form');
 }
 
+
 exports.login = function(req, res){
 	connection.query('SELECT * FROM movieinfo WHERE username = ?', [req.body.username], function (err, results) {
 		if (results[0] !== undefined) {
@@ -92,8 +93,9 @@ exports.login = function(req, res){
 	});
 }
 
-exports.loginOk = function(req, res){
+exports.userIndex = function(req, res){
 	connection.query('SELECT name, imgpath FROM movie LIMIT ?, ?', [start, offset] , function(err, rows) {
+		console.log(req.session.username);
 		res.render('login',{
 			username: req.session.username,
 			row: rows
@@ -129,11 +131,7 @@ exports.userinfoform = function (req, res) { //좋아요 영화 쿼리
 	});*/
 };
 
-exports.passwordchangeform = function (req, res) {
-    res.render('password');
-};
-
-exports.passwordchange = function (req, res) {
+exports.change = function (req, res) {
 	var data = req.session.username;
 	if (req.body.confirm === req.body.new) {
 		connection.query('UPDATE movieinfo SET password = ? WHERE username = ?', [req.body.new, data]);
@@ -146,19 +144,18 @@ exports.passwordchange = function (req, res) {
 	}
 };
 
-exports.withdrawalform = function (req, res) {
-    res.render('withdrawal');
-}
-
 exports.withdrawal = function (req, res) {
 	var data = req.session.username;
 	connection.query('DELETE from movieinfo WHERE username = ?', data,function (err){
 		res.redirect('/'); 
 	});
 }
+
 exports.logout = function(req, res){
 	console.log('로그아웃');
-	req.session.destroy();
-    	res.redirect('/');                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+	req.session.destroy(function(){
+		    	res.redirect('/'); 
+	});
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 }
 											 

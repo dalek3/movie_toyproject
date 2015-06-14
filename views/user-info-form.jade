@@ -4,16 +4,32 @@ block content
 		//usernav.jade include
 		include usernav
 		// Modal
-		#AModal.modal.fade
+		#changeModal.modal.fade
 			.modal-dialog
 				.modal-content
 					.modal-body
-						p One fine body&mldr;
-		#BModal.modal.fade
+						h4
+							b 비밀번호 변경
+							hr
+						form.form-horizontal(action='/user/#{username}/change', method='post')
+							label new Password
+							input#password.form-control(name='new' type='password', placeholder='Password')
+							label new Password confirm
+							input#password.form-control(name='confirm' type='password', placeholder='Password')
+							.footer
+								button.btn.btn-primary(type='submit') change
+		#withdrawModal.modal.fade
 				.modal-dialog
 					.modal-content
 						.modal-body
-							p One fine body&mldr;
+							h4
+								b 회원탈퇴
+								hr
+								form.form-horizontal(action='/user/#{username}/withdrawal', method='post')
+									h2 탈퇴하시겠습니까?
+									.footer
+										button.btn(type='submit') yes
+										button.btn(type='no') no
 		.header
 			h2.modal-title My Information
 			hr
@@ -22,9 +38,9 @@ block content
 				li
 					h4 My ID : #{username}
 				li
-					a(href='/user/#{username}/passwordchange' data-toggle='modal' data-target='#AModal') 비밀번호 변경
+					a(href='#' data-toggle='modal' data-target='#changeModal') 비밀번호 변경
 				li
-					a(href='/user/#{username}/withdrawal' data-toggle='modal' data-target='#BModal') 탈퇴
+					a(href='#' data-toggle='modal' data-target='#withdrawModal') 탈퇴
 					hr
 				li
 					h4 My favoratie movie

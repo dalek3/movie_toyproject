@@ -38,12 +38,10 @@ app.get('/user/:username/profile', routes.userinfoform);
 app.get('/register', routes.registerForm);
 app.post('/register', routes.register);
 app.get('/login', routes.loginForm);
-app.post('/user/:username', routes.login);
-app.get('/user/:username', routes.loginOk);
+app.post('/login', routes.login);
+app.get('/user/:username', routes.userIndex);
 
-app.get('/user/:username/passwordchange', routes.passwordchangeform);
-app.post('/user/:username/passwordchange', routes.passwordchange);
-app.get('/user/:username/withdrawal', routes.withdrawalform);
+app.post('/user/:username/change', routes.change);
 app.post('/user/:username/withdrawal', routes.withdrawal);
 
 app.get('/logout', routes.logout);
