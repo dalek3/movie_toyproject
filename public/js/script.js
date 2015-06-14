@@ -9,8 +9,8 @@ $(function () {
 	});	
     function is_login(){
         $.ajax({
-            url : '/products',
-            type : 'PUT',
+            url : '/user/:username',
+            type : 'GET',
             data : data
         });
     }
@@ -25,7 +25,6 @@ $(function () {
   });
   // movie
   $(document).on("click","a.like", function() {
-      if($is_login){
         $(this).removeClass('like').addClass('liked');
         $obj =  $(".like_count");
         $.getJSON('/count.json', function(data) {
@@ -33,10 +32,6 @@ $(function () {
             $obj.text(entry.like_count);  
           });
         });
-      }
-      else{
-        alert('로그인이 필요합니다.');
-      }
     return false;
   });
 
