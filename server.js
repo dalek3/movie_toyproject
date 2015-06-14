@@ -45,10 +45,8 @@ app.post('/user/:username/change', routes.change);
 app.post('/user/:username/withdrawal', routes.withdrawal);
 
 app.get('/logout', routes.logout);
-app.get('/count.json', routes.count)
-app.get('/discount.json', routes.discount)
-
-
+app.get('/api/login', routes.is_login);
+app.get('/api/count', routes.count)
 
 
 //웹서버를 실행합니다.

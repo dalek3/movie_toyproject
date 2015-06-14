@@ -57,9 +57,6 @@ exports.count= function (req, res) {
       }
    });
 }
-exports.discount = function (req, res) {
-  
-}
     
 exports.registerForm = function(req, res){
 	res.render('register-form');
@@ -134,8 +131,6 @@ exports.userIndex = function(req, res){
 }
 
 exports.userinfoform = function (req, res) { //좋아요 영화 쿼리
-    //var favorlite;
-    //var hatelist;
     connection.query('SELECT * FROM movieinfo WHERE username = ?', [req.session.username], function (err, data) {
     console.log(data);
     connection.query('SELECT * FROM favoritelist WHERE username = ?', [req.session.username], function (err, favorate) {
@@ -147,12 +142,6 @@ exports.userinfoform = function (req, res) { //좋아요 영화 쿼리
     });
   });
 }
-
-       
-		     
-
-	
-
 
 exports.change = function (req, res) {
 	var data = req.session.username;
@@ -181,10 +170,9 @@ exports.logout = function(req, res){
 	});
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 } 
-/*
-exports.count = function (req, res) {
-	var data = req.session.like_count;
-	connection.query('UPDATE movie SET like_count = ? WHERE url = ?', [data , req.session.url],function (err){
-		res.send(data);
+exports.is_login = function (req, res) { 
+	connection.query('SELECT * FROM movieinfo WHERE username = ?', [req.session.username], function (err, data) {
+		console.log(data);
+		res.send(data)
 	});
-};*/
+}
