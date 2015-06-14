@@ -9,8 +9,12 @@ body
 						h3
 							b #{row.name} (#{row.year})
 					.test.pull-right
+						//if movie.like
 						a.like(href='#' id = '#{row.url}')
 							span.glyphicon.glyphicon-thumbs-up
+						//else
+							//a.liked(href='#' id = '#{row.url}')
+								//span.glyphicon.glyphicon-thumbs-up
 						a.like_count(href='#' id = '#{row.url}') #{row.like_count}
 				li 감독: #{row.director}
 				li 장르: #{row.genre1} #{row.genre2} #{row.genre3} #{row.genre4} #{row.genre5}

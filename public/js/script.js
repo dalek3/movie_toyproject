@@ -64,27 +64,4 @@ $(document).ready(function(){
       }
     return false;
   });
-
-  $(document).on("click", "a.dislike", function() {
-      $(this).removeClass('dislike').addClass('disliked');
-      $obj =  $(".dislike_count");
-      $.getJSON('/Dcount.json', function(data) {
-        $.each(data, function(entryIndex, entry) {
-          $obj.text(entry.dislike_count);
-        });
-      });
-    return false;
-  });
-
-  $(document).on("click", "a.disliked", function() {
-
-      $(this).removeClass('disliked').addClass('dislike');
-      $obj =  $(".dislike_count");
-      $.getJSON('/Ddiscount.json', function(data) {
-        $.each(data, function(entryIndex, entry) {
-          $obj.text(entry.dislike_count);
-        });
-      });
-    return false;
-  });
 });
