@@ -7,8 +7,15 @@ $(function () {
 	$('#myModal').on('hidden.bs.modal',function(){
 		$(this).removeData('bs.modal')
 	});	
+    function is_login(){
+        $.ajax({
+            url : '/products',
+            type : 'PUT',
+            data : data
+        });
+    }
 
-	  // like_count
+  // like_count
   $(document).on("click", "a.like_count", function() {
     return false;
   });
@@ -18,47 +25,53 @@ $(function () {
   });
   // movie
   $(document).on("click","a.like", function() {
-      //$code = $(this).attr('id');
-      //check_movie("like", $code);
-      $(this).removeClass('like').addClass('liked');
-
-      /*$obj =  $(".like_count[id='"+$code+"']");
-      $obj.text(parseInt($obj.text()) + 1);*/
-
+      if($is_login){
+        $(this).removeClass('like').addClass('liked');
+        $obj =  $(".like_count");
+        $.getJSON('/count.json', function(data) {
+          $.each(data, function(entryIndex, entry) {
+            $obj.text(entry.like_count);  
+          });
+        });
+      }
+      else{
+        alert('로그인이 필요합니다.');
+      }
     return false;
   });
 
   $(document).on("click", "a.liked", function() {
-      //$code = $(this).attr('id');
-      //check_movie("like", $code);
       $(this).removeClass('liked').addClass('like');
-
-     /* $obj =  $(".like_count[id='"+$code+"']");
-      $obj.text(parseInt($obj.text()) - 1);*/
+      $obj =  $(".like_count");
+      $.getJSON('/discount.json', function(data) {
+        $.each(data, function(entryIndex, entry) {
+          $obj.text(entry.like_count);
+        });
+      });
 
     return false;
   });
 
   $(document).on("click", "a.dislike", function() {
-      //$code = $(this).attr('id');
-      //check_movie("dislike", $code);
       $(this).removeClass('dislike').addClass('disliked');
-
-      //$obj =  $(".dislike_count[id='"+$code+"']");
-      //$obj.text(parseInt($obj.text()) + 1);
-
+      $obj =  $(".dislike_count");
+      $.getJSON('/Dcount.json', function(data) {
+        $.each(data, function(entryIndex, entry) {
+          $obj.text(entry.dislike_count);
+        });
+      });
     return false;
   });
 
   $(document).on("click", "a.disliked", function() {
 
-      //$code = $(this).attr('id');
-      //check_movie("dislike", $code);
       $(this).removeClass('disliked').addClass('dislike');
-
-      //$obj =  $(".dislike_count[id='"+$code+"']");
-      //$obj.text(parseInt($obj.text()) - 1);
-
+      $obj =  $(".dislike_count");
+      $.getJSON('/Ddiscount.json', function(data) {
+        $.each(data, function(entryIndex, entry) {
+          $obj.text(entry.dislike_count);
+        });
+      });
     return false;
   });
 });

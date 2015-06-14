@@ -10,8 +10,8 @@ var connection = mysql.createConnection({
 
 //DB 조회 -json으로 변환 10개씩
 var start = 0;
-var offset =500;//item per page
-var page = 1
+var offset =600;//item per page
+var page = 1;
 exports.index = function(req, res){
 	start = (page-1) * offset;
 		connection.query('SELECT * FROM movie LIMIT ?, ?', [start, offset] , function(err, rows) {
@@ -21,8 +21,26 @@ exports.index = function(req, res){
 
 exports.movie = function(req, res){
 	connection.query('SELECT  *  FROM movie WHERE url= ?', [req.params.url], function(err, row) {
+		req.session.url = req.params.url
 		res.render('movie', {row: row[0]});
 	});
+}
+
+exports.count= function (req, res) {
+   connection.query('SELECT like_count FROM movie WHERE url = ?',[req.session.url], function (error, data) {
+   	data[0].like_count++;
+   	connection.query('UPDATE movie SET like_count = ? WHERE url = ? ',[data[0].like_count,req.session.url ], function (err) {
+        res.send(data);
+    });
+   });
+}
+exports.discount= function (req, res) {
+   connection.query('SELECT like_count FROM movie WHERE url = ?',[req.session.url], function (error, data) {
+   	data[0].like_count--;
+   	connection.query('UPDATE movie SET like_count = ? WHERE url = ?',[data[0].like_count,req.session.url], function (err) {
+        res.send(data);
+    });
+   });
 }
 
 exports.registerForm = function(req, res){
@@ -152,3 +170,10 @@ exports.logout = function(req, res){
 	});
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 } 
+/*
+exports.count = function (req, res) {
+	var data = req.session.like_count;
+	connection.query('UPDATE movie SET like_count = ? WHERE url = ?', [data , req.session.url],function (err){
+		res.send(data);
+	});
+};*/

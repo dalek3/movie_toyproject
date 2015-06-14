@@ -11,8 +11,7 @@ body
 					.test.pull-right
 						a.like(href='#' id = '#{row.url}')
 							span.glyphicon.glyphicon-thumbs-up
-						a.dislike(href='#' id = '#{row.url}')
-							span.glyphicon.glyphicon-thumbs-down
+						a.like_count(href='#' id = '#{row.url}') #{row.like_count}
 				li 감독: #{row.director}
 				li 장르: #{row.genre1} #{row.genre2} #{row.genre3} #{row.genre4} #{row.genre5}
 				li 배우: #{row.actor1} #{row.actor2} #{row.actor3} #{row.actor4} #{row.actor5}
