@@ -6,27 +6,22 @@ var connection = mysql.createConnection({
 	user: 'root',
 	password: '1q2w3e',
 	database: 'movie',
+	debug:true
 });
 
 //DB 조회 -json으로 변환 10개씩
 var start = 0;
-var offset =10;//item per page
+var offset =500;//item per page
 var page = 1
-/*(Math.random()*10).toFixed(0);
-if (page>3) {
-	page=(Math.random()*10).toFixed(0)
-}
-else{*/
-	exports.index = function(req, res){
-		start = (page-1) * offset;
-			connection.query('SELECT name, imgpath FROM movie LIMIT ?, ?', [start, offset] , function(err, rows) {
-				res.render('index',{row: rows});
-			});
-	};
-//}
+exports.index = function(req, res){
+	start = (page-1) * offset;
+		connection.query('SELECT * FROM movie LIMIT ?, ?', [start, offset] , function(err, rows) {
+			res.render('index',{row: rows});
+		});
+};
 
 exports.movie = function(req, res){
-	connection.query('SELECT  *  FROM movie WHERE name= ?', [req.params.name], function(err, row) {
+	connection.query('SELECT  *  FROM movie WHERE url= ?', [req.params.url], function(err, row) {
 		res.render('movie', {row: row[0]});
 	});
 }

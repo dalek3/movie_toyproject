@@ -32,7 +32,7 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/movie/:name', routes.movie);
+app.get('/movie/:url', routes.movie);
 app.get('/user/:username/profile', routes.userinfoform);
 
 app.get('/register', routes.registerForm);
