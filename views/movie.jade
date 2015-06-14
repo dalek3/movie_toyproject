@@ -9,9 +9,9 @@ body
 						h3
 							b #{row.name} (#{row.year})
 					.test.pull-right
-						a.like(href='#')
+						a.like(href='#' id = '#{row.url}')
 							span.glyphicon.glyphicon-thumbs-up
-						a.hate(href='#')
+						a.dislike(href='#' id = '#{row.url}')
 							span.glyphicon.glyphicon-thumbs-down
 				li 감독: #{row.director}
 				li 장르: #{row.genre1} #{row.genre2} #{row.genre3} #{row.genre4} #{row.genre5}
