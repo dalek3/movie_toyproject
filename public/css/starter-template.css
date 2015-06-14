@@ -39,8 +39,11 @@ body {
 .modal-body{
 	margin-bottom: 10%;
 }
-.modal-dialog{
+.modal-dialog {
 	width: 850px;
+}
+.etc{
+	width: 300px;
 }
 .modal-footer {
   padding: 15px;

@@ -6,7 +6,6 @@ var connection = mysql.createConnection({
 	user: 'root',
 	password: '1q2w3e',
 	database: 'movie',
-	debug:true
 });
 
 //DB 조회 -json으로 변환 10개씩
@@ -89,7 +88,7 @@ exports.login = function(req, res){
 }
 
 exports.userIndex = function(req, res){
-	connection.query('SELECT name, imgpath FROM movie LIMIT ?, ?', [start, offset] , function(err, rows) {
+	connection.query('SELECT * FROM movie LIMIT ?, ?', [start, offset] , function(err, rows) {
 		console.log(req.session.username);
 		res.render('login',{
 			username: req.session.username,
@@ -152,5 +151,4 @@ exports.logout = function(req, res){
 		    	res.redirect('/'); 
 	});
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-}
-											 
+} 
