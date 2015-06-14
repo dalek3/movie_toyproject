@@ -35,7 +35,7 @@ $(document).ready(function(){
   // movie
   $(document).on("click","a.like", function() {
       if($is_login){
-        $(this).removeClass('like').addClass('liked');
+        $(this).switchClass('like','liked');
         $obj =  $(".like_count");
         $.getJSON('/api/count', function(data) {
           $.each(data, function(entryIndex, entry) {
@@ -51,7 +51,7 @@ $(document).ready(function(){
 
   $(document).on("click", "a.liked", function() {
     if($is_login){
-      $(this).removeClass('liked').addClass('like');
+      $(this).switchClass('liked','like');
       $obj =  $(".like_count");
       $.getJSON('/api/discount', function(data) {
         $.each(data, function(entryIndex, entry) {

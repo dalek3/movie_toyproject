@@ -6,12 +6,11 @@ var connection = mysql.createConnection({
 	user: 'root',
 	password: '1q2w3e',
 	database: 'movie',
-	debug:true
 });
 
 //DB 조회 -json으로 변환 10개씩
 var start = 0;
-var offset =5;//item per page
+var offset =600;//item per page
 var page = 1;
 exports.index = function(req, res){
 	start = (page-1) * offset;
@@ -25,6 +24,23 @@ exports.movie = function(req, res){
 		req.session.url = req.params.url
 		res.render('movie', {row: row[0]});
 	});
+}
+
+exports.count= function (req, res) {
+   connection.query('SELECT like_count FROM movie WHERE url = ?',[req.session.url], function (error, data) {
+   	data[0].like_count++;
+   	connection.query('UPDATE movie SET like_count = ? WHERE url = ? ',[data[0].like_count,req.session.url ], function (err) {
+        res.send(data);
+    });
+   });
+}
+exports.discount= function (req, res) {
+   connection.query('SELECT like_count FROM movie WHERE url = ?',[req.session.url], function (error, data) {
+   	data[0].like_count--;
+   	connection.query('UPDATE movie SET like_count = ? WHERE url = ?',[data[0].like_count,req.session.url], function (err) {
+        res.send(data);
+    });
+   });
 }
 
 exports.registerForm = function(req, res){
@@ -154,28 +170,9 @@ exports.logout = function(req, res){
 	});
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 } 
-
-exports.count= function (req, res) {
-   connection.query('SELECT like_count FROM movie WHERE url = ?',[req.session.url], function (error, data) {
-   	data[0].like_count++;
-   	connection.query('UPDATE movie SET like_count = ? WHERE url = ? ',[data[0].like_count,req.session.url ], function (err) {
-        res.send(data);
-    });
-   });
-}
-
-exports.discount= function (req, res) {
-   connection.query('SELECT like_count FROM movie WHERE url = ?',[req.session.url], function (error, data) {
-   	data[0].like_count--;
-   	connection.query('UPDATE movie SET like_count = ? WHERE url = ?',[data[0].like_count,req.session.url], function (err) {
-        res.send(data);
-    });
-   });
-}
-
-exports.is_login = function (req, res) {
-	connection.query('SELECT username FROM movieinfo WHERE username = ?', [req.session.username], function (err, data) {
+exports.is_login = function (req, res) { 
+	connection.query('SELECT * FROM movieinfo WHERE username = ?', [req.session.username], function (err, data) {
 		console.log(data);
-		res.send(data);
+		res.send(data)
 	});
 }
