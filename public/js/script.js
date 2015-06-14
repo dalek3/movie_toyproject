@@ -1,20 +1,29 @@
-$(function () {
-	var $container = $('.grid');
+ $(function () {
+    var $container = $('.grid');
 
-	$('.grid-item').imagesLoaded(function () {
-		$container.isotope({ });
-	});
-	$('#myModal').on('hidden.bs.modal',function(){
-		$(this).removeData('bs.modal')
-	});	
-    function is_login(){
-        $.ajax({
-            url : '/user/:username',
-            type : 'GET',
-            data : data
-        });
-    }
+    $('.grid-item').imagesLoaded(function () {
+      $container.isotope({ });
+    });
+    $('#myModal').on('hidden.bs.modal',function(){
+      $(this).removeData('bs.modal')
+    }); 
+  });
 
+  $is_login = false;
+
+  function is_login() {
+    $.ajax({
+      type: "GET",
+      url: "/api/login",
+      dataType: "json",
+      success: function(data) {
+        $is_login = data[0].username;
+      },
+    });
+  }
+
+$(document).ready(function(){
+   is_login();
   // like_count
   $(document).on("click", "a.like_count", function() {
     return false;
@@ -25,25 +34,34 @@ $(function () {
   });
   // movie
   $(document).on("click","a.like", function() {
+      if($is_login){
         $(this).removeClass('like').addClass('liked');
         $obj =  $(".like_count");
-        $.getJSON('/count.json', function(data) {
+        $.getJSON('/api/count', function(data) {
           $.each(data, function(entryIndex, entry) {
             $obj.text(entry.like_count);  
           });
         });
+      }
+      else{
+        alert('로그인이 필요합니다.');
+      }
     return false;
   });
 
   $(document).on("click", "a.liked", function() {
+    if($is_login){
       $(this).removeClass('liked').addClass('like');
       $obj =  $(".like_count");
-      $.getJSON('/discount.json', function(data) {
+      $.getJSON('/api/discount', function(data) {
         $.each(data, function(entryIndex, entry) {
           $obj.text(entry.like_count);
         });
       });
-
+      }
+      else{
+        alert('로그인이 필요합니다.');
+      }
     return false;
   });
 
