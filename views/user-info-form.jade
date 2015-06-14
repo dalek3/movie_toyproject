@@ -29,6 +29,11 @@ block content
 									h2 탈퇴하시겠습니까?
 									.footer
 										button.btn(type='submit') yes
+
+		#myModal.modal.fade
+			.modal-dialog
+				.modal-content
+
 		.header
 			h2.modal-title My Information
 			hr
@@ -45,5 +50,6 @@ block content
 					h4 My favoratie movie
 					hr
 				li
-					h4 My hate movie
-					hr
+					each movie in result
+						a(href='../../movie/#{movie.movieurl}' data-toggle='modal' data-target='#myModal')
+							|#{movie.moviename}<br>

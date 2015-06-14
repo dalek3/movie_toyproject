@@ -21,28 +21,46 @@ exports.index = function(req, res){
 
 exports.movie = function(req, res){
 	connection.query('SELECT  *  FROM movie WHERE url= ?', [req.params.url], function(err, row) {
-		req.session.url = req.params.url
-		res.render('movie', {row: row[0]});
+	    req.session.url = req.params.url,
+	    req.session.moviename = row[0].name;
+	    res.render('movie', { row: row[0] });
+	    console.log(req.session.moviename);
 	});
 }
 
 exports.count= function (req, res) {
-   connection.query('SELECT like_count FROM movie WHERE url = ?',[req.session.url], function (error, data) {
-   	data[0].like_count++;
-   	connection.query('UPDATE movie SET like_count = ? WHERE url = ? ',[data[0].like_count,req.session.url ], function (err) {
-        res.send(data);
-    });
-   });
-}
-exports.discount= function (req, res) {
-   connection.query('SELECT like_count FROM movie WHERE url = ?',[req.session.url], function (error, data) {
-   	data[0].like_count--;
-   	connection.query('UPDATE movie SET like_count = ? WHERE url = ?',[data[0].like_count,req.session.url], function (err) {
-        res.send(data);
-    });
-   });
-}
+    connection.query('SELECT username FROM favoritelist WHERE movieurl = ? AND username = ? AND moviename = ?', [req.session.url, req.session.username, req.session.moviename], function (error, data) {
+        if (data[0] !== undefined) {
+            console.log(data)
+            connection.query('DELETE FROM favoritelist WHERE movieurl = ? AND username = ? AND moviename = ?', [req.session.url, req.session.username, req.session.moviename]);
+            connection.query('SELECT like_count FROM movie WHERE url = ?', [req.session.url], function (error, data) {
+                data[0].like_count--;
+                connection.query('UPDATE movie SET like_count = ? WHERE url = ?', [data[0].like_count, req.session.url], function (err) {
+                    res.send(data);
+                });
+            }); 
+          
+      }
+      else {
+          console.log(req.session.url); 
+          console.log(req.session.username);
+          console.log(data);
+          connection.query('SELECT like_count FROM movie WHERE url = ?', [req.session.url], function (error, data) {
+              data[0].like_count++;
+              connection.query('UPDATE movie SET like_count = ? WHERE url = ?', [data[0].like_count, req.session.url], function (err) {
+                  res.send(data);
+              });
+          });
+          connection.query('INSERT INTO favoritelist SET username = ? , movieurl = ?, moviename = ?', [req.session.username, req.session.url, req.session.moviename], function (error, data) {
 
+          });
+      }
+   });
+}
+exports.discount = function (req, res) {
+  
+}
+    
 exports.registerForm = function(req, res){
 	res.render('register-form');
 };
@@ -118,30 +136,23 @@ exports.userIndex = function(req, res){
 exports.userinfoform = function (req, res) { //좋아요 영화 쿼리
     //var favorlite;
     //var hatelist;
-	connection.query('SELECT * FROM movieinfo WHERE username = ?', [req.session.username], function (err, data) {
-		console.log(data);
-		res.render('user-info-form', {
-		  	username: req.session.username
-		     	//result: favorate,
-		     	//result2: hate
-		     });
-	});
-	/*    var favorlite;
-    var hatelist;
-	connection.query('SELECT * FROM favoritelist WHERE useremail = ?', [req.session.useremail], 
-		function (err, favorate) {
-	    connection.query('SELECT * FROM hatelist WHERE useremail = ?', [req.session.useremail],
-	    	function (err, hate) {
-		        console.log(favorate);
-		        console.log(hate);
-		        res.render('user-info-form', {
-		            useremail: req.session.useremail,
-		              result: favorate,
-		             result2: hate
-		    });
-		});
-	});*/
-};
+    connection.query('SELECT * FROM movieinfo WHERE username = ?', [req.session.username], function (err, data) {
+    console.log(data);
+    connection.query('SELECT * FROM favoritelist WHERE username = ?', [req.session.username], function (err, favorate) {
+        console.log(favorate);
+        res.render('user-info-form', {
+            username: req.session.username,
+            result: favorate
+        });
+    });
+  });
+}
+
+       
+		     
+
+	
+
 
 exports.change = function (req, res) {
 	var data = req.session.username;
@@ -170,9 +181,10 @@ exports.logout = function(req, res){
 	});
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 } 
-exports.is_login = function (req, res) { 
-	connection.query('SELECT * FROM movieinfo WHERE username = ?', [req.session.username], function (err, data) {
-		console.log(data);
-		res.send(data)
+/*
+exports.count = function (req, res) {
+	var data = req.session.like_count;
+	connection.query('UPDATE movie SET like_count = ? WHERE url = ?', [data , req.session.url],function (err){
+		res.send(data);
 	});
-}
+};*/
